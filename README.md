@@ -24,6 +24,10 @@ sheet = wb.worksheets[0]
 for i in range(sheet.max_row):
     sheet.cell(row=i+1, column=2).value = re.sub(r'[a-z]', '*', sheet.cell(row=i+1,column=1).value)
 ```
+```python
+re.sub(r'[a-z],'*',sheet.cell(row=i+1,column=1).value)
+``` 
+will search for each occurrence of each small letter and replace it with '*'
 ## Step 4: Save and close the file
 ```python
 wb.save("demo.xlsx") 
