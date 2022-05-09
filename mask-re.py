@@ -1,7 +1,10 @@
+import openpyxl
 import re
 
-nameList = ["Chan Tai Man", "Lee Lap Man","Cheung Kwok Keung","Li Ho Yan"]
-R = []
-for x in nameList:
-    R.append(re.sub(r'[a-z]','*', x))
-print(R)
+wb = openpyxl.load_workbook('demo.xlsx')
+sheet = wb.worksheets[0]
+
+for i in range(sheet.max_row):
+    sheet.cell(row=i+1, column=2).value = re.sub(r'[a-z]', '*', sheet.cell(row=i+1,column=1).value)
+ 
+wb.save("demo.xlsx") 
